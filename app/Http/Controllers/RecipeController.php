@@ -10,78 +10,67 @@ use P4\Http\Controllers\Controller;
 class RecipeController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * responds to GET /recipes
      */
-    public function index()
+    public function getIndex()
     {
-        //
+        return 'This will display a list of recipes';
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     *responds to GET /recipes/show/{title?}
      */
-    public function create()
+    public function getShow()
     {
-        //
+        return 'This will display a specific recipe';
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *responds to GET /recipes/create
      */
-    public function store(Request $request)
+    public function getCreate()
     {
-        //
+        return 'This will display a form to submit a new recipe';
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *responds to POST /recipes/create
      */
-    public function show($id)
+    public function postCreate()
     {
-        //
+        return 'This will process a new recipe';
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *responds to GET /recipes/edit/{id?}
      */
-    public function edit($id)
+    public function getEdit()
     {
-        //
+        return 'This will display an edit form for a particular recipe';
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *responds to POST /recipes/edit/{id?}
      */
-    public function update(Request $request, $id)
+    public function postEdit()
     {
-        //
+        return 'This will process the edit form for a particular recipe';
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *responds to GET /recipes/confirm-delete/{id?}
      */
-    public function destroy($id)
+    public function getConfirmDelete()
     {
-        //
+        return 'This will display the deletion confirmation form';
     }
-}
+
+    /**
+     *responds to GET /recipes/delete/{id?}
+     */
+    public function getDoDelete()
+    {
+        return 'This will delete a recipe';
+    }
+
+  }

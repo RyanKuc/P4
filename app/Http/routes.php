@@ -45,6 +45,12 @@ Route::post('/register', 'Auth\AuthController@postRegister');
 /recipes
 -----------------------------------------------------*/
 
+#show recipes
+Route::get('/recipes', 'RecipeController@getIndex');
+
+#show a specific recipe
+Route::get('/recipes/show/{title?}', 'RecipeController@getShow');
+
 # Show recipe creation form
 Route::get('/recipes/create', 'RecipeController@getCreate');
 
@@ -62,9 +68,3 @@ Route::get('/recipes/confirm-delete/{id?}', 'RecipeController@getConfirmDelete')
 
 # show recipe Delete form
 Route::get('/recipes/delete/{id?}', 'RecipeController@getDoDelete');
-
-#show recipes
-Route::get('/recipes', 'RecipeController@getIndex');
-
-#show a specific recipe
-Route::get('/recipes/show/{title?}', 'RecipeController@getShow');
