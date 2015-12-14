@@ -12,7 +12,13 @@ class ConnectRecipesAndUsers extends Migration
      */
     public function up()
     {
-        //
+        #adjust the recipes table to add a new foreign key for users and establish rel
+        Schema::table('recipes', function(Blueprint $table) {
+
+          $table->integer('user_id')->unsigned();
+
+          $table->foreign('user_id')->references('id')->on('users');
+        });
     }
 
     /**
@@ -22,6 +28,12 @@ class ConnectRecipesAndUsers extends Migration
      */
     public function down()
     {
-        //
+        #drop the foreign key column and rel
+        Schema::table('recipes', function (Blueprint $table) {
+
+          $table->dropForeign('recipes_user_id_foriegn');
+
+          $table->dropColumn('user_id');
+        });
     }
 }

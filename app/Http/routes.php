@@ -69,6 +69,12 @@ Route::get('/recipes/confirm-delete/{id?}', 'RecipeController@getConfirmDelete')
 # show recipe Delete form
 Route::get('/recipes/delete/{id?}', 'RecipeController@getDoDelete');
 
+# show recipes that are liked by me
+Route::get('recipes/{id}/islikedbyme', 'RecipeController@isLikedByMe');
+
+# Process like/unlike a recipe
+Route::post('recipe/like', 'RecipeController@like');
+
 
 /*----------------------------------------------------
 /test database connection, CAN BE REMOVED WHEN DONE

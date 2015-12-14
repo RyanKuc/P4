@@ -12,7 +12,16 @@ class CreateRecipesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('recipes', function (Blueprint $table) {
+
+          # columns for recipes table
+          $table->increments('id');
+          $table->timestamps();
+          $table->string('title',50);
+          $table->string('description',200);
+          $table->text('ingredients');
+          $table->text('instructions');
+        });
     }
 
     /**
@@ -22,6 +31,6 @@ class CreateRecipesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('recipes');
     }
 }
