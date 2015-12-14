@@ -31,7 +31,7 @@ class ConnectRecipesAndUsers extends Migration
         #drop the foreign key column and rel
         Schema::table('recipes', function (Blueprint $table) {
 
-          $table->dropForeign('recipes_user_id_foriegn');
+          $table->dropForeign('recipes_user_id_foreign');
 
           $table->dropColumn('user_id');
         });
