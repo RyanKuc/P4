@@ -11,9 +11,20 @@ class WelcomeController extends Controller {
 
   public function getIndex() {
     if(\Auth::check()) {
-      return redirect()->to('/recipes/show');
-    }
-    return view('auth.login');
+      $user = \Auth::user();
 
+      $recipes =
+      \P4\Recipe::where('user_id','=',\Auth::id())->orderBy('id','DESC')->get();
+
+      $data = array (
+      'user' => $user,
+      'recipes' => $recipes
+    );
+
+      return view('welcome.index')->with($data);
+    }
+    else {
+    return view('auth.login');
+  }
   }
 }

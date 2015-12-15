@@ -14,7 +14,10 @@ class RecipeController extends Controller
      */
     public function getIndex()
     {
-        return 'This will display a list of recipes';
+      $recipes =
+      \P4\Recipe::orderBy('id','DESC')->get();
+    
+        return view('recipes.index')->with('recipes', $recipes);
     }
 
     /**

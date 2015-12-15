@@ -32,7 +32,27 @@
 
     </header>
 
-    <nav>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Ally-Eats</a>
+          </div>
+          <div>
+            <ul class="nav navbar-nav">
+              @if(Auth::check())
+              <li><a href='/'>Home</a></li>
+              <li><a href='/recipes/create'>Add a Recipe</a></li>
+              <li><a href='/recipes/show'>All Recipes</a></li>
+              <li><a href='/'>My Recipes</a></li>
+              <li><a href='/logout'>Log out</a></li>
+              @else
+              <li><a href='/'>Home</a></li>
+              <li><a href='/login'>Log in</a></li>
+              <li><a href='/register'>Register</a></li>
+              @endif
+            </ul>
+          </div>
+        </div>
 
     </nav>
 
