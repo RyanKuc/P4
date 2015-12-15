@@ -15,11 +15,7 @@
 /welcome page
 -----------------------------------------------------*/
 
-Route::get('/', function () {
-  return view('welcome');
-});
-
-Route::get('/welcome', 'WelcomeController@getIndex');
+Route::get('/', 'WelcomeController@getIndex');
 
 /*----------------------------------------------------
 /User Registration and Login / Logout
@@ -39,6 +35,24 @@ Route::get('/register', 'Auth\AuthController@getRegister');
 
 # Process registration form
 Route::post('/register', 'Auth\AuthController@postRegister');
+
+
+# for testing purposes - remove before live
+Route::get('/confirm-login-worked', function() {
+
+    # You may access the authenticated user via the Auth facade
+    $user = Auth::user();
+
+    if($user) {
+        echo 'You are logged in.';
+        dump($user->toArray());
+    } else {
+        echo 'You are not logged in.';
+    }
+
+    return;
+
+});
 
 
 /*----------------------------------------------------

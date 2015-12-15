@@ -1,6 +1,8 @@
 <!-- resources/views/auth/login.blade.php -->
+@extends('layouts.master')
 
-<form method="POST" action="/auth/login">
+@section('content')
+<form method="POST" action="/login">
     {!! csrf_field() !!}
 
     <div>
@@ -21,3 +23,4 @@
         <button type="submit">Login</button>
     </div>
 </form>
+@stop

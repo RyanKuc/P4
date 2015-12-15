@@ -10,6 +10,10 @@ use P4\Http\Controllers\Controller;
 class WelcomeController extends Controller {
 
   public function getIndex() {
-    return 'This is the Welcome Controller';
+    if(\Auth::check()) {
+      return redirect()->to('/recipes/show');
+    }
+    return view('auth.login');
+
   }
 }
