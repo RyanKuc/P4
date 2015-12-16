@@ -15,7 +15,7 @@
 
       <div class='form-group'>
         <label for='picture_link'>Picture Link:</label>
-        <input type='url' class='form-control' id='picture_link' name='picture_link' maxlength='50'>
+        <input type='url' class='form-control' id='picture_link' name='picture_link'>
       </div>
 
       <div class='form-group'>

@@ -21,11 +21,15 @@ class RecipeController extends Controller
     }
 
     /**
-     *responds to GET /recipes/show/{title?}
+     *responds to GET /recipes/show/{id?}
      */
-    public function getShow()
+    public function getShow($id)
     {
-        return 'This will display a specific recipe';
+      $recipe = \P4\Recipe::where('id', '=', $id)->first();
+      $tags = $recipe->tags;
+
+        return view('recipes.show')->with('recipe', $recipe)
+                                    ->with('tags', $tags);
     }
 
     /**
@@ -53,7 +57,7 @@ class RecipeController extends Controller
       $recipe->ingredients = $request->ingredients;
       $recipe->instructions = $request->instructions;
       $recipe->user_id = \Auth::id();
-      
+
       #save
       $recipe->save();
 
@@ -74,9 +78,26 @@ class RecipeController extends Controller
     /**
      *responds to GET /recipes/edit/{id?}
      */
-    public function getEdit()
+    public function getEdit($id)
     {
-        return 'This will display an edit form for a particular recipe';
+        $recipe = \P4\Recipe::with('tags')->find($id);
+        if(is_null($recipe)) {
+          \Session::flash('flash_message', 'recipe not found');
+          return redirect('\recipes');
+        }
+
+        $tagModel = new \P4\Tag();
+        $tags_for_form = $tagModel->getTagsForForm();
+        $tags_for_this_recipe = [];
+          foreach($recipe->tags as $tag) {
+            $tags_for_this_recipe[] = $tag->tag_name;
+          }
+
+    return view('recipes.edit')->with(['recipe' => $recipe,
+          'tags_for_form' => $tags_for_form,
+          'tags_for_this_recipe' => $tags_for_this_recipe,
+        ]);
+
     }
 
     /**

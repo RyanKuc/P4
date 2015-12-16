@@ -63,7 +63,7 @@ Route::get('/confirm-login-worked', function() {
 Route::get('/recipes/show', 'RecipeController@getIndex');
 
 #show a specific recipe
-Route::get('/recipes/show/{title?}', 'RecipeController@getShow');
+Route::get('/recipes/show/{id?}', 'RecipeController@getShow');
 
 # Show recipe creation form
 Route::get('/recipes/create', 'RecipeController@getCreate');
