@@ -3,7 +3,7 @@
 @section('content')
 
 <div class='col-sm-4'>
-  <form method='POST' action='/recipes/create' role='form'>
+  <form method='POST' action='/recipes/edit' role='form'>
 
     <input type='hidden' value='{{ csrf_token() }}' name='_token'>
 
@@ -42,7 +42,7 @@
       @endforeach
     </div>
 
-    <button type='submit' class='btn btn-success'>Submit</button>
+    <button type='submit' class='btn btn-success'>Save Recipe</button>
 
   </form>
 </div>

@@ -103,9 +103,33 @@ class RecipeController extends Controller
     /**
      *responds to POST /recipes/edit/{id?}
      */
-    public function postEdit()
+    public function postEdit(Request $request)
     {
-        return 'This will process the edit form for a particular recipe';
+
+            #process into db
+            $recipe = \P4\Recipe::find($request->id);
+            $recipe->title = $request->title;
+            $recipe->picture_link = $request->picture_link;
+            $recipe->description = $request->description;
+            $recipe->ingredients = $request->ingredients;
+            $recipe->instructions = $request->instructions;
+
+
+            #save
+            $recipe->save();
+
+            # Add the tags
+              if($request->tags) {
+                  $tags = $request->tags;
+              }
+              else {
+                  $tags = [];
+                }
+              $recipe->tags()->sync($tags);
+
+            # send confirmation message and move to my recipes
+            \Session::flash('flash_message', 'Recipe Successfully Updated!');
+            return redirect('/recipes/show/'.$request->id);
     }
 
     /**
