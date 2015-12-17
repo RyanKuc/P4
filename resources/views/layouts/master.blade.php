@@ -63,7 +63,9 @@
     </section>
 
     <footer>
-
+      <div>
+        
+      </div>
     </footer>
     @yield('body')
   </body>

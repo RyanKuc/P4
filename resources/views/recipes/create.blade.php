@@ -25,12 +25,13 @@
 
       <div class='form-group'>
         <label for='ingredients'>Ingredients:</label>
-        <input type='text' class='form-control' id='ingredients' name='ingredients'>
+          <textarea class='form-control' rows='5' id='ingredients' name='ingredients'> </textarea>
       </div>
 
       <div class='form-group'>
         <label for='instructions'>Instructions:</label>
-        <input type='text' class='form-control' id='instructions' name='instructions'>
+        <textarea class='form-control' rows='5' id='instructions' name='instructions'>
+        </textarea>
       </div>
 
       <div class='form-group'>
