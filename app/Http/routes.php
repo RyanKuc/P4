@@ -58,12 +58,13 @@ Route::get('/confirm-login-worked', function() {
 /*----------------------------------------------------
 /recipes
 -----------------------------------------------------*/
-
+#Apply Middleware to restrict all recipe related content
 Route::group(['middleware' => 'auth'], function () {
-#show recipes
+
+#Show recipes
 Route::get('/recipes/show', 'RecipeController@getIndex');
 
-#show a specific recipe
+#Show a specific recipe
 Route::get('/recipes/show/{id?}', 'RecipeController@getShow');
 
 # Show recipe creation form
@@ -81,10 +82,10 @@ Route::post('/recipes/edit', 'RecipeController@postEdit');
 # Show recipe confirm Delete form
 Route::get('/recipes/confirm-delete/{id?}', 'RecipeController@getConfirmDelete');
 
-# show recipe Delete form
+# Show recipe Delete form
 Route::get('/recipes/delete/{id?}', 'RecipeController@getDoDelete');
 
-# show recipes that are liked by me
+# Show recipes that are liked by me
 Route::get('recipes/{id}/islikedbyme', 'RecipeController@isLikedByMe');
 
 # Process like/unlike a recipe
