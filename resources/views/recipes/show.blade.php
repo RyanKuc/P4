@@ -15,6 +15,26 @@
             <button type='submit' class='btn btn-info'>UNlike</button>
 
         </form>
+        @if($recipe->user_id === $user)
+        <form method='GET' action='/recipes/edit/{{ $recipe->id }}' role='form'>
+
+          <input type='hidden' value='{{ csrf_token() }}' name='_token'>
+
+          <input type='hidden' value='{{ $recipe->id }}' name='recipe_id'>
+
+            <button type='submit' class='btn btn-primary'>Edit</button>
+          </form>
+
+
+          <form method='GET' action='/recipes/confirm-delete/{{ $recipe->id }}' role='form'>
+
+            <input type='hidden' value='{{ csrf_token() }}' name='_token'>
+
+            <input type='hidden' value='{{ $recipe->id }}' name='recipe_id'>
+
+              <button type='submit' class='btn btn-warning'>Delete</button>
+            </form>
+          @endif
 
     @else
 
@@ -27,6 +47,25 @@
           <button type='submit' class='btn btn-success'>like</button>
 
       </form>
+      @if($recipe->user_id === $user)
+      <form method='GET' action='/recipes/edit/{{ $recipe->id }}' role='form'>
+
+        <input type='hidden' value='{{ csrf_token() }}' name='_token'>
+
+        <input type='hidden' value='{{ $recipe->id }}' name='recipe_id'>
+
+          <button type='submit' class='btn btn-primary'>Edit</button>
+        </form>
+        <form method='GET' action='/recipes/confirm-delete/{{ $recipe->id }}' role='form'>
+
+          <input type='hidden' value='{{ csrf_token() }}' name='_token'>
+
+          <input type='hidden' value='{{ $recipe->id }}' name='recipe_id'>
+
+            <button type='submit' class='btn btn-warning'>Delete</button>
+          </form>
+        @endif
+
 
     @endif
     <br>

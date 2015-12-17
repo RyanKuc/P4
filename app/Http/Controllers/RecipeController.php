@@ -35,7 +35,8 @@ class RecipeController extends Controller
 
       return view('recipes.show')->with('recipe', $recipe)
       ->with('tags', $tags)
-      ->with('isLiked', $isLiked);
+      ->with('isLiked', $isLiked)
+      ->with('user', $user);
     }
 
     /**
