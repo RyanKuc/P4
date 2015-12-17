@@ -81,10 +81,18 @@ class RecipeController extends Controller
     public function getEdit($id)
     {
         $recipe = \P4\Recipe::with('tags')->find($id);
+        $userId = \Auth::id();
+
+
         if(is_null($recipe)) {
           \Session::flash('flash_message', 'recipe not found');
-          return redirect('\recipes');
+          return redirect('/');
         }
+        elseif ($userId <> $recipe->user_id) {
+          \Session::flash('flash_message', 'you cannot edit someone elses recipe');
+          return redirect('/');
+        }
+
 
         $tagModel = new \P4\Tag();
         $tags_for_form = $tagModel->getTagsForForm();

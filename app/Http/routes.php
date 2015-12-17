@@ -59,6 +59,7 @@ Route::get('/confirm-login-worked', function() {
 /recipes
 -----------------------------------------------------*/
 
+Route::group(['middleware' => 'auth'], function () {
 #show recipes
 Route::get('/recipes/show', 'RecipeController@getIndex');
 
@@ -88,7 +89,7 @@ Route::get('recipes/{id}/islikedbyme', 'RecipeController@isLikedByMe');
 
 # Process like/unlike a recipe
 Route::post('recipe/like', 'RecipeController@like');
-
+});
 
 /*----------------------------------------------------
 /test database connection, CAN BE REMOVED WHEN DONE
