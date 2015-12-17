@@ -3,18 +3,19 @@
 @section('content')
 <h1> Add a new recipe </h1>
 
-  <div class='col-sm-4'>
+<div class="container">
+
     <form method='POST' action='/recipes/create' role='form'>
       <input type='hidden' value='{{ csrf_token() }}' name='_token'>
 
-
+    <div class='col-md-4'>
       <div class='form-group'>
         <label for='title'>Title:</label>
         <input type='text' class='form-control' id='title' name='title'>
       </div>
 
       <div class='form-group'>
-        <label for='picture_link'>Picture Link:</label>
+        <label for='picture_link'>Picture URL:</label>
         <input type='url' class='form-control' id='picture_link' name='picture_link'>
       </div>
 
@@ -33,7 +34,8 @@
         <textarea class='form-control' rows='5' id='instructions' name='instructions'>
         </textarea>
       </div>
-
+    </div>
+    <div class='col-md-4'>
       <div class='form-group'>
         <label for='tags'>Tags:</label>
         @foreach($tags_for_form as $tag_id => $tag)
@@ -42,8 +44,10 @@
       </div>
 
       <button type='submit' class='btn btn-success'>Submit</button>
+    </div>
 
     </form>
+
 </div>
 
 @stop
