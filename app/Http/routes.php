@@ -86,10 +86,10 @@ Route::get('/recipes/confirm-delete/{id?}', 'RecipeController@getConfirmDelete')
 Route::get('/recipes/delete/{id?}', 'RecipeController@getDoDelete');
 
 # Show recipes that are liked by me
-Route::get('recipes/{id}/islikedbyme', 'RecipeController@isLikedByMe');
+Route::get('/recipes/{id}/islikedbyme', 'RecipeController@isLikedByMe');
 
 # Process like/unlike a recipe
-Route::post('recipe/like', 'RecipeController@like');
+Route::post('/recipes/like/{id?}', 'RecipeController@postLike');
 });
 
 /*----------------------------------------------------

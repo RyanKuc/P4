@@ -183,4 +183,42 @@ public function getDoDelete($recipe_id)
     return redirect('/');
   }
 
+
+
+  /**
+  *responds to POST /recipes/like/{id?}
+  */
+
+  public function postLike(Request $request)
+  {
+
+    #find recipe
+
+  $user = \Auth::id();
+  $prevLike = \P4\Like::where('recipe_id', '=', $request->recipe_id)
+                            ->where('user_id', '=', $user)->first();
+
+  #if can't find recipe
+  if(is_null($prevLike)) {
+
+
+    #process into db
+    $like = new \P4\Like();
+    $like->recipe_id = $request->recipe_id;
+    $like->user_id = \Auth::id();
+
+    #save
+    $like->save();
+
+
+    # send confirmation message and move to my recipes
+    \Session::flash('flash_message', 'You have liked this post!');
+    return redirect('/recipes/show/'.$request->recipe_id);
+  }
+
+  \Session::flash('flash_message','you have already liked this post');
+  return redirect('/recipes/show/');
+  }
+
+
 }

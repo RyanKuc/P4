@@ -5,8 +5,8 @@
 
 <div class="container">
 
-    <form method='POST' action='/recipes/create' role='form'>
-      <input type='hidden' value='{{ csrf_token() }}' name='_token'>
+  <form method='POST' action='/recipes/create' role='form'>
+    <input type='hidden' value='{{ csrf_token() }}' name='_token'>
 
     <div class='col-md-4'>
       <div class='form-group'>
@@ -26,7 +26,7 @@
 
       <div class='form-group'>
         <label for='ingredients'>Ingredients:</label>
-          <textarea class='form-control' rows='5' id='ingredients' name='ingredients'> </textarea>
+        <textarea class='form-control' rows='5' id='ingredients' name='ingredients'> </textarea>
       </div>
 
       <div class='form-group'>
@@ -39,14 +39,14 @@
       <div class='form-group'>
         <label for='tags'>Tags:</label>
         @foreach($tags_for_form as $tag_id => $tag)
-          <br><input type='checkbox' name='tags[]' value='{{$tag_id}}'> {{ $tag['tag_name'] }}
+        <br><input type='checkbox' name='tags[]' value='{{$tag_id}}'> {{ $tag['tag_name'] }}
         @endforeach
       </div>
 
       <button type='submit' class='btn btn-success'>Submit</button>
     </div>
 
-    </form>
+  </form>
 
 </div>
 

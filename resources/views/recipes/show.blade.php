@@ -17,4 +17,15 @@
     <img src='{{ $recipe->picture_link }}'>
   </div>
 
+  <div class='container'>
+    <form method='POST' action='/recipes/like' role='form'>
+
+      <input type='hidden' value='{{ csrf_token() }}' name='_token'>
+
+      <input type='hidden' value='{{ $recipe->id }}' name='recipe_id'>
+
+        <button type='submit' class='btn btn-success'>like</button>
+      </div>
+    </form>
+
 @stop

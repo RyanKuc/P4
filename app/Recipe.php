@@ -13,4 +13,9 @@ class Recipe extends Model
     public function tags() {
       return $this->belongsToMany('\P4\Tag')->withTimestamps();
   }
+
+  public function likes()
+{
+    return $this->hasMany('\P4\Like');
+}
 }

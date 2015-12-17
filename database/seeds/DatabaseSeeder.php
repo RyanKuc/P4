@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RecipesTableSeeder::class);
         $this->call(TagsTableSeeder::class);
         $this->call(RecipeTagTableSeeder::class);
-
+        $this->call(LikesTableSeeder::class);
         Model::reguard();
     }
 }
