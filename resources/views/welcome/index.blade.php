@@ -7,9 +7,9 @@
 
 @foreach($recipes as $recipe)
   <div>
-    <a href='/recipes/show/{{$recipe->id}}'>{{ $recipe->title }}</a>
-    <a href='/recipes/edit/{{$recipe->id}}'> Edit</a>
-    {{--  <img src='{{ $recipe->picture_link }}'> --}}
+    <a href='/recipes/show/{{ $recipe->id }}'>{{ $recipe->title }}</a>
+    <a href='/recipes/edit/{{ $recipe->id }}'> Edit</a>
+    <a href='/recipes/confirm-delete/{{ $recipe->id }}'> Delete</a>
   </div>
 @endforeach
 
