@@ -55,6 +55,14 @@ class RecipeController extends Controller
     */
     public function postCreate(Request $request)
     {
+      $this->validate($request, [
+        'title' => 'required|min:5|string',
+        'picture_link' => 'required|URL',
+        'description' => 'required|min:5|string',
+        'ingredients' => 'required|min:5|string',
+        'instructions' => 'required|min:5|string',
+    ]);
+
 
       #process into db
       $recipe = new \P4\Recipe();
@@ -120,6 +128,14 @@ class RecipeController extends Controller
   */
   public function postEdit(Request $request)
   {
+    $this->validate($request, [
+      'title' => 'required|min:5|string',
+      'picture_link' => 'required|URL',
+      'description' => 'required|min:5|string',
+      'ingredients' => 'required|min:5|string',
+      'instructions' => 'required|min:5|string',
+  ]);
+
 
     #process into db
     $recipe = \P4\Recipe::find($request->id);
@@ -181,6 +197,10 @@ class RecipeController extends Controller
     if($recipe->tags()) {
       $recipe->tags()->detach();
     }
+
+    #remove likes associated with this recipe
+    $deleteLikes = \P4\Like::where('recipe_id', $recipe_id)->delete();
+
 
     #delete
     $recipe->delete();
