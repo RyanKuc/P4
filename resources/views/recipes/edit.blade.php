@@ -22,7 +22,7 @@ Edit a Recipe
 
   @endif
 
-  <form method='POST' action='/recipes/edit' role='form'>
+  <form method='POST' action='/recipes/edit'>
     <input type='hidden' value='{{ csrf_token() }}' name='_token'>
     <input type='hidden' value='{{ $recipe->id }}' name='id'>
 

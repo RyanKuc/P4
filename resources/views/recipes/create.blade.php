@@ -20,7 +20,7 @@ Add a Recipe
   </div>
   @endif
 
-  <form method='POST' action='/recipes/create' role='form'>
+  <form method='POST' action='/recipes/create'>
     <input type='hidden' value='{{ csrf_token() }}' name='_token'>
 
     <div class='col-md-4'>

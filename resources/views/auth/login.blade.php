@@ -1,4 +1,4 @@
-<!-- resources/views/auth/login.blade.php -->
+
 @extends('layouts.master')
 
 @section('title')
@@ -18,12 +18,13 @@ Log In
 @endif
 <div class='container'>
   <div class='col-sm-4'>
-<form method="POST" action="/login" role='form'>
-    {!! csrf_field() !!}
     <legend>Log in</legend>
+    <form method="POST" action="/login">
+    {!! csrf_field() !!}
+
     <div class='form-group'>
         <label for='email'>Email:</label>
-        <input type="email" name="email" value="{{ old('email') }}">
+        <input type="email" name="email">
     </div>
 
     <div class='form-group'>
@@ -36,5 +37,5 @@ Log In
     </div>
 </form>
 </div>
-<div>
+</div>
 @stop

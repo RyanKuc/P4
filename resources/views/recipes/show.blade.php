@@ -14,7 +14,7 @@ Recipe Center
   <div class='col-sm-1'>
     @if($isLiked === 'true')
 
-    <form method='POST' action='/recipes/unlike' role='form'>
+    <form method='POST' action='/recipes/unlike'>
 
       <input type='hidden' value='{{ csrf_token() }}' name='_token'>
 
@@ -27,7 +27,7 @@ Recipe Center
 
     @else
 
-    <form method='POST' action='/recipes/like' role='form'>
+    <form method='POST' action='/recipes/like'>
 
       <input type='hidden' value='{{ csrf_token() }}' name='_token'>
 

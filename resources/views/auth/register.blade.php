@@ -1,4 +1,4 @@
-<!-- resources/views/auth/register.blade.php -->
+
 
 @extends('layouts.master')
 
@@ -20,17 +20,18 @@ Register
 
 <div class='container'>
   <div class='col-sm-4'>
-<form method="POST" action="/register" role='form'>
+    <legend>Register</legend>
+<form method="POST" action="/register">
     {!! csrf_field() !!}
-  <legend>Register</legend>
+
     <div class='form-group'>
         <label for='name'>Username:</label>
-        <input type="text" name="name" value="{{ old('name') }}">
+        <input type="text" name="name">
     </div>
 
     <div class='form-group'>
         <label for='email'>Email:</label>
-        <input type="email" name="email" value="{{ old('email') }}">
+        <input type="email" name="email">
     </div>
 
     <div class='form-group'>
