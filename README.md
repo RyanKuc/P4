@@ -4,8 +4,8 @@
 http://P4.ryankucinski.com
 
 ## Demo/Screencast (requires quicktime player)
-Main Folder: [http://www.screencast.com/users/ryankucinski]
-P4 Demo:[http://www.screencast.com/users/ryankucinski/folders/Default/media/a28cae32-a38b-4121-9f2d-361a69ecc01f]
+* Main Folder: [http://www.screencast.com/users/ryankucinski]
+* P4Demo: [http://www.screencast.com/users/ryankucinski/folders/Default/media/a28cae32-a38b-4121-9f2d-361a69ecc01f]
 
 ## Description / Process
 Link to [Project Requirements](http://dwa15.com/Projects/P4)
