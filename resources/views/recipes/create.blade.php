@@ -1,22 +1,28 @@
 @extends('layouts.master')
 
 @section('content')
+
+<div class="container">
 <h1> Add a new recipe </h1>
 
 @if(count($errors) > 0)
+<div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">x</button>
     <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
         @endforeach
     </ul>
+  </div>
 @endif
 
-<div class="container">
+
 
   <form method='POST' action='/recipes/create' role='form'>
     <input type='hidden' value='{{ csrf_token() }}' name='_token'>
 
     <div class='col-md-4'>
+
       <div class='form-group'>
         <label for='title'>Title:</label>
         <input type='text' class='form-control' id='title' name='title'>
@@ -52,6 +58,7 @@
       </div>
 
       <button type='submit' class='btn btn-success'>Submit</button>
+
     </div>
 
   </form>

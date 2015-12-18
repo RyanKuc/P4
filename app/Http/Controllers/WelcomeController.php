@@ -24,7 +24,7 @@ class WelcomeController extends Controller {
       return view('welcome.index')->with($data);
     }
     else {
-    return view('auth.login');
+    return view('welcome.guestIndex');
   }
   }
 }

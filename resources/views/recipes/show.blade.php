@@ -7,9 +7,7 @@
     <h1>{{ $recipe->title }}</h1>
     <h2>{{ $recipe->description }}</h2>
 </div>
-<div class='col-sm-2'>
-<br>
-<br>
+<div class='col-sm-1'>
     @if($isLiked === 'true')
 
         <form method='POST' action='/recipes/unlike' role='form'>
@@ -53,16 +51,36 @@
     </div>
 
 
-<div class='col-sm-4'>
-    <h3>Ingredients: </h3><p>{{ $recipe->ingredients }}</p>
-    <h3>Instructions: </h3><p>{{ $recipe->instructions }}</p>
-      <h3>Tags:</h3>
-      @foreach($tags as $tag)
-      {{ $tag->tag_name }}<br>
-      @endforeach
+<div class='col-sm-6'>
+  <div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Ingredients:</h3>
+  </div>
+  <div class="panel-body">
+    {{ $recipe->ingredients }}
+  </div>
+</div>
+<div class="panel panel-primary">
+<div class="panel-heading">
+  <h3 class="panel-title">Instructions:</h3>
+</div>
+<div class="panel-body">
+  {{ $recipe->instructions }}
+</div>
+</div>
+<div class="panel panel-primary">
+<div class="panel-heading">
+  <h3 class="panel-title">Tags:</h3>
+</div>
+<div class="panel-body">
+  @foreach($tags as $tag)
+  {{ $tag->tag_name }}<br>
+  @endforeach
+</div>
+</div>
 </div>
   <div class='col-sm-5'>
     <br>
-    <img class="img-rounded" height="300px" width='auto' src='{{ $recipe->picture_link }}'>
+    <img class="img-rounded" src='{{ $recipe->picture_link }}'>
 </div>
 @stop

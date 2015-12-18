@@ -4,38 +4,45 @@
 
 @section('content')
 @if(count($errors) > 0)
+<div class="alert alert-dismissible alert-warning">
+  <button type="button" class="close" data-dismiss="alert">x</button>
     <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
         @endforeach
     </ul>
+  </div>
 @endif
 
-<form method="POST" action="/register">
+<div class='container'>
+  <div class='col-sm-4'>
+<form method="POST" action="/register" role='form'>
     {!! csrf_field() !!}
-
-    <div>
-        Name
+  <legend>Register</legend>
+    <div class='form-group'>
+        <label for='name'>Username:</label>
         <input type="text" name="name" value="{{ old('name') }}">
     </div>
 
-    <div>
-        Email
+    <div class='form-group'>
+        <label for='email'>Email:</label>
         <input type="email" name="email" value="{{ old('email') }}">
     </div>
 
-    <div>
-        Password
+    <div class='form-group'>
+        <label for='password'>Password:</label>
         <input type="password" name="password">
     </div>
 
-    <div>
-        Confirm Password
-        <input type="password" name="password_confirmation">
+    <div class='form-group'>
+      <label for='password_confirmation'>Confirm Password:</label>
+      <input type="password" name="password_confirmation">
     </div>
 
-    <div>
-        <button type="submit">Register</button>
+    <div class='form-group'>
+        <button class='btn btn-success' type="submit">Register</button>
     </div>
 </form>
+</div>
+</div>
 @stop

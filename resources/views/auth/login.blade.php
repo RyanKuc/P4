@@ -3,31 +3,34 @@
 
 @section('content')
 @if(count($errors) > 0)
+<div class="alert alert-dismissible alert-warning">
+  <button type="button" class="close" data-dismiss="alert">x</button>
     <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
         @endforeach
     </ul>
+  </div>
 @endif
-<form method="POST" action="/login">
+<div class='container'>
+  <div class='col-sm-4'>
+<form method="POST" action="/login" role='form'>
     {!! csrf_field() !!}
-
-    <div>
-        Email
+    <legend>Log in</legend>
+    <div class='form-group'>
+        <label for='email'>Email:</label>
         <input type="email" name="email" value="{{ old('email') }}">
     </div>
 
-    <div>
-        Password
+    <div class='form-group'>
+        <label for='password'>Password:</label>
         <input type="password" name="password" id="password">
     </div>
 
-    <div>
-        <input type="checkbox" name="remember"> Remember Me
-    </div>
-
-    <div>
-        <button type="submit">Login</button>
+    <div class='form-group'>
+        <button class='btn btn-success' type="submit">Login</button>
     </div>
 </form>
+</div>
+<div>
 @stop

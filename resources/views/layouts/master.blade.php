@@ -15,6 +15,8 @@
 
       <link href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/united/bootstrap.min.css' rel='stylesheet'>
 
+      <link href='/CSS/p4.css' rel='stylesheet'>
+
       @yield('head')
 
     </head>
@@ -70,8 +72,6 @@
       </section>
 
       <footer>
-        <br>
-        <br>
         &copy; {{ date('Y') }} Ryan Kucinski
       </footer>
 

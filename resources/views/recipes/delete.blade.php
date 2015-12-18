@@ -13,6 +13,7 @@
         @endforeach
     </ul>
 @endif
+<div class='container'>
     <h1>Delete Recipe</h1>
 
     <p>
@@ -23,5 +24,5 @@
     <p>
         <a href='/recipes/delete/{{$recipe->id}}'>Delete</a>
     </p>
-
+</div>
 @stop

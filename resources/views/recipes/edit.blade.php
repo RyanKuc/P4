@@ -1,16 +1,19 @@
 @extends('layouts.master')
 
 @section('content')
-
-<h1>Edit recipe </h1>
+<div class='container'>
+<h1>Edit {{ $recipe->title }} recipe </h1>
 @if(count($errors) > 0)
+<div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">x</button>
     <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
         @endforeach
     </ul>
+  </div>
 @endif
-<div class='container'>
+
   <form method='POST' action='/recipes/edit' role='form'>
 
     <input type='hidden' value='{{ csrf_token() }}' name='_token'>
@@ -45,7 +48,7 @@
         </textarea>
       </div>
     </div>
-    <div class='col-md-4'>
+    <div class='col-md-2'>
       <div class='form-group'>
         <label for='tags'>Tags:</label>
         @foreach($tags_for_form as $tag_id => $tag)
@@ -58,7 +61,7 @@
     </div>
   </form>
   <div class='col-md-4'>
-    <img src='{{ $recipe->picture_link }}'>
+    <img class="img-rounded" src='{{ $recipe->picture_link }}'>
   </div>
 
 
