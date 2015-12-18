@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+Recipe Center
+@stop
+
 @section('content')
 <div class='container'>
 

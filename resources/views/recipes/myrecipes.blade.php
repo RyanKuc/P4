@@ -1,8 +1,10 @@
 @extends('layouts.master')
 
+@section('title')
+My Recipes
+@stop
+
 @section('content')
-
-
 
 <div class="container">
   <h1>My Recipes</h1>

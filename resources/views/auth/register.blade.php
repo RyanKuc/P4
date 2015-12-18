@@ -2,6 +2,10 @@
 
 @extends('layouts.master')
 
+@section('title')
+Register
+@stop
+
 @section('content')
 @if(count($errors) > 0)
 <div class="alert alert-dismissible alert-danger">

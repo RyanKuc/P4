@@ -1,6 +1,10 @@
 <!-- resources/views/auth/login.blade.php -->
 @extends('layouts.master')
 
+@section('title')
+Log In
+@stop
+
 @section('content')
 @if(count($errors) > 0)
 <div class="alert alert-dismissible alert-danger">

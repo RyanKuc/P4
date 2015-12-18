@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Delete Recipe
+    Delete A Recipe
 @stop
 
 @section('content')

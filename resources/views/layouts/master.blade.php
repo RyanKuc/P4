@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-
+      @yield('title', 'Ally-Eats')
     </title>
     <meta charset='utf-8'>
 
@@ -17,22 +17,8 @@
 
     <link href='/CSS/p4.css' rel='stylesheet'>
 
-    @yield('head')
-
   </head>
   <body>
-
-    {{--  get flash messages --}}
-
-    @if(\Session::has('flash_message'))
-    <div class='flash_message'>
-      {{ \Session::get('flash_message') }}
-    </div>
-    @endif
-
-    <header>
-
-    </header>
 
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -50,7 +36,7 @@
             @if(Auth::check())
 
             <li><a href='/recipes/create'>Add a Recipe</a></li>
-            <li><a href='/recipes/show'>All Recipes</a></li>
+            <li><a href='/recipes'>All Recipes</a></li>
             <li><a href='/recipes/myrecipes'>My Recipes</a></li>
             <li><a href='/recipes/likedbyme'>My Liked Recipes</a></li>
             <li class="dropdown">
@@ -94,6 +80,13 @@
       </div>
 
     </nav>
+    {{--  get flash messages --}}
+
+    @if(\Session::has('flash_message'))
+    <div class='flash_message'>
+      {{ \Session::get('flash_message') }}
+    </div>
+    @endif
 
     <section>
 

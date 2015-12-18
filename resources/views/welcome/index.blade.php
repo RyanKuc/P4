@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@section('title')
+Welcome to Ally-Eats
+@stop
 @section('content')
 
 <div class="container">
