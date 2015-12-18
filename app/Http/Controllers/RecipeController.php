@@ -110,7 +110,7 @@ class RecipeController extends Controller
 
       # send confirmation message and move to my recipes
       \Session::flash('flash_message', 'Recipe Successfully Added!');
-      return redirect('/');
+      return redirect('/recipes/myrecipes');
     }
 
     /**
