@@ -35,6 +35,6 @@ Link to [Project Requirements](http://dwa15.com/Projects/P4)
 ## Consulted Sources
 * Laravel Docs [http://laravel.com/docs/5.1]
 * Foobooks Class Example/Lecture Notes [https://github.com/susanBuck/dwa15-fall2015-notes/tree/master/03_Laravel], [https://github.com/susanBuck/foobooks]
-* Mydnic's simple like system [http://www.mydnic.be/post/simple-like-system-with-laravel-5] (didn't end up recreating)
+* Mydnic's simple like system [http://www.mydnic.be/post/simple-like-system-with-laravel-5] -didn't end up recreating/using built my own after reviewing this though
 * W3 Schools Bootstrap Tutorial [http://www.w3schools.com/bootstrap/default.asp]
 * Hello Fresh (user their recipes for seeder data) [https://www.hellofresh.com/]
