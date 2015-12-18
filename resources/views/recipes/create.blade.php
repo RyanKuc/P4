@@ -3,20 +3,18 @@
 @section('content')
 
 <div class="container">
-<h1> Add a new recipe </h1>
+  <h1> Add a new recipe </h1>
 
-@if(count($errors) > 0)
-<div class="alert alert-dismissible alert-danger">
-  <button type="button" class="close" data-dismiss="alert">x</button>
+  @if(count($errors) > 0)
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">x</button>
     <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
     </ul>
   </div>
-@endif
-
-
+  @endif
 
   <form method='POST' action='/recipes/create' role='form'>
     <input type='hidden' value='{{ csrf_token() }}' name='_token'>
@@ -49,6 +47,7 @@
         </textarea>
       </div>
     </div>
+
     <div class='col-md-4'>
       <div class='form-group'>
         <label for='tags'>Tags:</label>

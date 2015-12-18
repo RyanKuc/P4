@@ -5,7 +5,7 @@
 
 
 <div class="container">
-  <h2>My Recipes:</h2>
+  <h1>My Recipes</h1>
   <table class="table table-hover">
     <thead>
       <tr>

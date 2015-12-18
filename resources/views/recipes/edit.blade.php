@@ -2,26 +2,27 @@
 
 @section('content')
 <div class='container'>
-<h1>Edit {{ $recipe->title }} recipe </h1>
-@if(count($errors) > 0)
-<div class="alert alert-dismissible alert-danger">
-  <button type="button" class="close" data-dismiss="alert">x</button>
+
+  <h1>Edit {{ $recipe->title }} recipe </h1>
+
+  @if(count($errors) > 0)
+
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">x</button>
     <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
     </ul>
   </div>
-@endif
+
+  @endif
 
   <form method='POST' action='/recipes/edit' role='form'>
-
     <input type='hidden' value='{{ csrf_token() }}' name='_token'>
-
     <input type='hidden' value='{{ $recipe->id }}' name='id'>
 
     <div class='col-md-4'>
-
       <div class='form-group'>
         <label for='title'>Title:</label>
         <input type='text' class='form-control' id='title' name='title' value='{{ $recipe->title }}'>
@@ -48,6 +49,7 @@
         </textarea>
       </div>
     </div>
+
     <div class='col-md-2'>
       <div class='form-group'>
         <label for='tags'>Tags:</label>
@@ -60,6 +62,7 @@
       <button type='submit' class='btn btn-success'>Save Recipe</button>
     </div>
   </form>
+
   <div class='col-md-4'>
     <img class="img-rounded" src='{{ $recipe->picture_link }}'>
   </div>

@@ -10,54 +10,54 @@ use DB;
 
 class RecipeController extends Controller
 {
-  /**
-  * responds to GET /recipes
-  */
-  public function getIndex()
-  {
-    $recipes =
-    \P4\Recipe::orderBy('id','DESC')->get();
+    /**
+    * responds to GET /recipes
+    */
+    public function getIndex()
+    {
+      $recipes =
+      \P4\Recipe::orderBy('id','DESC')->get();
 
-    return view('recipes.index')->with('recipes', $recipes);
-  }
-
-  /**
-  *responds to GET /recipes/show/{id?}
-  */
-  public function getShow($id)
-  {
-    $user = \Auth::id();
-    $recipe = \P4\Recipe::where('id', '=', $id)->first();
-    if(\P4\Like::where('recipe_id', '=', $id)
-    ->where('user_id', '=', $user)->exists()){
-      $isLiked = 'true';}
-      else{$isLiked = 'false';}
-      $tags = $recipe->tags;
-
-      return view('recipes.show')->with('recipe', $recipe)
-      ->with('tags', $tags)
-      ->with('isLiked', $isLiked)
-      ->with('user', $user);
+      return view('recipes.index')->with('recipes', $recipes);
     }
 
     /**
     *responds to GET /recipes/show/{id?}
     */
-    public function getMyRecipes()
+    public function getShow($id)
     {
+      $user = \Auth::id();
+      $recipe = \P4\Recipe::where('id', '=', $id)->first();
+      if(\P4\Like::where('recipe_id', '=', $id)
+      ->where('user_id', '=', $user)->exists()){
+        $isLiked = 'true';}
+        else{$isLiked = 'false';}
+        $tags = $recipe->tags;
 
-          $user = \Auth::user();
+        return view('recipes.show')->with('recipe', $recipe)
+        ->with('tags', $tags)
+        ->with('isLiked', $isLiked)
+        ->with('user', $user);
+      }
 
-          $recipes =
-          \P4\Recipe::where('user_id','=',\Auth::id())->orderBy('id','DESC')->get();
+      /**
+      *responds to GET /recipes/myrecipes
+      */
+      public function getMyRecipes()
+      {
 
-          $data = array (
-          'user' => $user,
-          'recipes' => $recipes
+        $user = \Auth::user();
+
+        $recipes =
+        \P4\Recipe::where('user_id','=',\Auth::id())->orderBy('id','DESC')->get();
+
+        $data = array (
+        'user' => $user,
+        'recipes' => $recipes
         );
 
-          return view('recipes.myrecipes')->with($data);
-        }
+      return view('recipes.myrecipes')->with($data);
+    }
 
 
 
@@ -78,14 +78,14 @@ class RecipeController extends Controller
     */
     public function postCreate(Request $request)
     {
+      #validate form inputs
       $this->validate($request, [
         'title' => 'required|min:5|string',
         'picture_link' => 'required|URL',
         'description' => 'required|min:5|string',
         'ingredients' => 'required|min:5|string',
         'instructions' => 'required|min:5|string',
-    ]);
-
+      ]);
 
       #process into db
       $recipe = new \P4\Recipe();
@@ -121,7 +121,7 @@ class RecipeController extends Controller
       $recipe = \P4\Recipe::with('tags')->find($id);
       $userId = \Auth::id();
 
-
+      #ensure that recipes exists and belongs to user or redirect them to homepage
       if(is_null($recipe)) {
         \Session::flash('flash_message', 'recipe not found');
         return redirect('/');
@@ -130,15 +130,14 @@ class RecipeController extends Controller
         \Session::flash('flash_message', 'you cannot edit someone elses recipe');
         return redirect('/');
       }
-
-
+      #pull in tags
       $tagModel = new \P4\Tag();
       $tags_for_form = $tagModel->getTagsForForm();
       $tags_for_this_recipe = [];
       foreach($recipe->tags as $tag) {
         $tags_for_this_recipe[] = $tag->tag_name;
       }
-
+      #show recipe edit form with current values
       return view('recipes.edit')->with(['recipe' => $recipe,
       'tags_for_form' => $tags_for_form,
       'tags_for_this_recipe' => $tags_for_this_recipe,
@@ -151,13 +150,14 @@ class RecipeController extends Controller
   */
   public function postEdit(Request $request)
   {
+    #validate
     $this->validate($request, [
       'title' => 'required|min:5|string',
       'picture_link' => 'required|URL',
       'description' => 'required|min:5|string',
       'ingredients' => 'required|min:5|string',
       'instructions' => 'required|min:5|string',
-  ]);
+    ]);
 
 
     #process into db
@@ -193,28 +193,35 @@ class RecipeController extends Controller
   {
     $userId = \Auth::id();
     $recipe = \P4\Recipe::find($recipe_id);
-
+  #confirm recipe belongs to current user
     if ($userId <> $recipe->user_id) {
       \Session::flash('flash_message', 'you cannot delete someone elses recipe');
       return redirect('/');
     }
-
+  #show delete confirmation view
     return view('recipes.delete')->with('recipe', $recipe);
   }
+
 
   /**
   *responds to GET /recipes/delete/{id?}
   */
   public function getDoDelete($recipe_id)
   {
+    $userId = \Auth::id();
     #find recipe
     $recipe = \P4\Recipe::find($recipe_id);
+    #confirm recipe belongs to current user
 
-    #if can't find recipe
+    #if can't find recipe or doesnt belong to current user redirect
     if(is_null($recipe)) {
       \Session::flash('flash_message','recipe not found.');
       return redirect('/');
     }
+      elseif($userId <> $recipe->user_id) {
+        \Session::flash('flash_message', 'you cannot delete someone elses recipe');
+        return redirect('/');
+      }
 
     #remove tags
     if($recipe->tags()) {
@@ -242,13 +249,13 @@ class RecipeController extends Controller
   public function postLike(Request $request)
   {
 
-    #find recipe
+    #find recipe and see if user already liked recipe
 
     $user = \Auth::id();
     $prevLike = \P4\Like::where('recipe_id', '=', $request->recipe_id)
     ->where('user_id', '=', $user)->first();
 
-    #if can't find recipe
+    #if like doesnt already exist for that user and recipe
     if(is_null($prevLike)) {
 
 
@@ -265,33 +272,43 @@ class RecipeController extends Controller
       \Session::flash('flash_message', 'You have liked this post!');
       return redirect('/recipes/show/'.$request->recipe_id);
     }
-
+    #if the user already liked this recipe
     \Session::flash('flash_message','you have already liked this post');
     return redirect('/recipes/show/');
   }
 
+  /**
+  *responds to POST /recipes/unlike/{id?}
+  */
   public function postUnLike(Request $request) {
+    #find like for this user and recipe
     $user = \Auth::id();
     $prevLike = \P4\Like::where('recipe_id', '=', $request->recipe_id)
     ->where('user_id', '=', $user)->first();
+
+
+    #delete like
     $prevLike->delete();
 
-    \Session::flash('flash_message', 'You have Unliked this post!');
+    #confirmation message
+    \Session::flash('flash_message', 'You have Un-liked this post!');
     return redirect('/recipes/show/'.$request->recipe_id);
 
   }
 
+  /**
+  *responds to GET /recipes/likedbyme
+  */
   public function getLikedByMe() {
     $user = \Auth::id();
     $likes = \P4\Like::where('user_id', '=', $user)->get();
     $recipeIds = [];
     foreach($likes as $like){
-    $recipeIds[$like->recipe_id] = $like->recipe_id;}
-    $recipes = \P4\Recipe::whereIn('id', $recipeIds)->get();
+      $recipeIds[$like->recipe_id] = $like->recipe_id;}
+      $recipes = \P4\Recipe::whereIn('id', $recipeIds)->get();
 
 
-    return view('recipes.like')->with('recipes', $recipes);
-  }
-
+      return view('recipes.like')->with('recipes', $recipes);
+    }
 
 }

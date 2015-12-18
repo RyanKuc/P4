@@ -4,7 +4,6 @@
     Delete Recipe
 @stop
 
-
 @section('content')
 @if(count($errors) > 0)
     <ul>

@@ -2,15 +2,14 @@
 
 @section('content')
 
-<h1> Hello {{ $user->name }} </h1>
-<h2> My Recipes: </h2>
-
-@foreach($recipes as $recipe)
-  <div>
-    <a href='/recipes/show/{{ $recipe->id }}'>{{ $recipe->title }}</a>
-    <a href='/recipes/edit/{{ $recipe->id }}'> Edit</a>
-    <a href='/recipes/confirm-delete/{{ $recipe->id }}'> Delete</a>
+<div class="container">
+  <div class='jumbotron'>
+    <h1> Welcome Back {{ $user->name }} !</h1>
+    <p> Lets get started <a href='/recipes/create'>add a new recipe</a> or <a href='/recipes/show'>browse all recipes..</a></p>
   </div>
-@endforeach
-
+  <div class='jumbotron'>
+    <h2> New Features:</h2>
+    <p> 'Like' a post! Members can now 'like' their and other members recipes, view their 'liked' recipes and adjust their list of 'likes' as desired.</p>
+  </div>
+</div>
 @stop
