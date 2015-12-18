@@ -14,7 +14,11 @@ class RecipeTagTableSeeder extends Seeder
         $recipes =[
           'Italian Ciabatta Burgers' => ['Beef','Sandwich'],
           'Asian Noodle Salad' => ['Pasta','Sides','Salad'],
-          'Caesar Salad' => ['Appetizers','Salad','Sides']
+          'Caesar Salad' => ['Appetizers','Salad','Sides'],
+          'Glazed Teriyaki Chicken' => ['Chicken'],
+          'Southwestern Chicken Sausage Chili' => ['Appetizers','Sides'],
+          'Coconut-Crusted Chicken Fingers' => ['Chicken'],
+          'Steak Au Poivre' => ['Beef', 'Sides'],
         ];
 
         foreach($recipes as $title => $tags) {

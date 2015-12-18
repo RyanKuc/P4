@@ -274,7 +274,7 @@ class RecipeController extends Controller
     }
     #if the user already liked this recipe
     \Session::flash('flash_message','you have already liked this post');
-    return redirect('/recipes/show/');
+    return redirect('/recipes/show/'.$request->recipe_id);
   }
 
   /**
