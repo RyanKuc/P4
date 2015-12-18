@@ -43,7 +43,8 @@
               <li><a href='/'>Home</a></li>
               <li><a href='/recipes/create'>Add a Recipe</a></li>
               <li><a href='/recipes/show'>All Recipes</a></li>
-              <li><a href='/'>My Recipes</a></li>
+              <li><a href='/recipes/myrecipes'>My Recipes</a></li>
+              <li><a href='/recipes/likedbyme'>My Liked Recipes</a></li>
               <li><a href='/logout'>Log out</a></li>
               @else
               <li><a href='/'>Home</a></li>

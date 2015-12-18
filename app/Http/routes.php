@@ -64,6 +64,9 @@ Route::group(['middleware' => 'auth'], function () {
 #Show recipes
 Route::get('/recipes/show', 'RecipeController@getIndex');
 
+#Show MY recipes
+Route::get('/recipes/myrecipes', 'RecipeController@getMyRecipes');
+
 #Show a specific recipe
 Route::get('/recipes/show/{id?}', 'RecipeController@getShow');
 
@@ -86,7 +89,7 @@ Route::get('/recipes/confirm-delete/{id?}', 'RecipeController@getConfirmDelete')
 Route::get('/recipes/delete/{id?}', 'RecipeController@getDoDelete');
 
 # Show recipes that are liked by me
-Route::get('/recipes/likedbyme', 'RecipeController@LikedByMe');
+Route::get('/recipes/likedbyme', 'RecipeController@getLikedByMe');
 
 # Process like/like a recipe
 Route::post('/recipes/like/{id?}', 'RecipeController@postLike');

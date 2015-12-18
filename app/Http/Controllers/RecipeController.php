@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 # use P4\Http\Requests;
 use P4\Http\Controllers\Controller;
+use DB;
 
 class RecipeController extends Controller
 {
@@ -38,6 +39,28 @@ class RecipeController extends Controller
       ->with('isLiked', $isLiked)
       ->with('user', $user);
     }
+
+    /**
+    *responds to GET /recipes/show/{id?}
+    */
+    public function getMyRecipes()
+    {
+
+          $user = \Auth::user();
+
+          $recipes =
+          \P4\Recipe::where('user_id','=',\Auth::id())->orderBy('id','DESC')->get();
+
+          $data = array (
+          'user' => $user,
+          'recipes' => $recipes
+        );
+
+          return view('recipes.myrecipes')->with($data);
+        }
+
+
+
 
     /**
     *responds to GET /recipes/create
@@ -256,6 +279,18 @@ class RecipeController extends Controller
     \Session::flash('flash_message', 'You have Unliked this post!');
     return redirect('/recipes/show/'.$request->recipe_id);
 
+  }
+
+  public function getLikedByMe() {
+    $user = \Auth::id();
+    $likes = \P4\Like::where('user_id', '=', $user)->get();
+    $recipeIds = [];
+    foreach($likes as $like){
+    $recipeIds[$like->recipe_id] = $like->recipe_id;}
+    $recipes = \P4\Recipe::whereIn('id', $recipeIds)->get();
+
+
+    return view('recipes.like')->with('recipes', $recipes);
   }
 
 

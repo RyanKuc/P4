@@ -13,4 +13,5 @@ class Like extends Model
 public function recipes() {
   return $this->belongsToMany('\P4\Recipe');
 }
+
 }
