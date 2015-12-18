@@ -20,9 +20,7 @@ Link to [Project Requirements](http://dwa15.com/Projects/P4)
 
 
 ## Details
-* login required.
-* Site validates and uses proper/modern HTML structure.
-* CSS for bootstrap does not validate (as expected).
+* login required. (Use -email jill@harvard.edu -password "helloworld")
 * Validates all HTML form inputs.
 * links to all other CSCI E-15 assignments and their GitHub repos.
 
