@@ -32,9 +32,9 @@
           <a class="navbar-brand" href="/">Ally-Eats</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            @if(Auth::check())
 
+            @if(Auth::check())
+            <ul class="nav navbar-nav">
             <li><a href='/recipes/create'>Add a Recipe</a></li>
             <li><a href='/recipes'>All Recipes</a></li>
             <li><a href='/recipes/myrecipes'>My Recipes</a></li>
@@ -59,7 +59,7 @@
             </ul>
 
               @else
-
+              <ul class="nav navbar-nav">
               <li><a href='/login'>Log in</a></li>
               <li><a href='/register'>Register</a></li>
               <li class="dropdown">
@@ -77,9 +77,9 @@
                   </ul>
                 </li>
               </ul>
-            </li>
+
             @endif
-          </ul>
+
         </div>
       </div>
 
