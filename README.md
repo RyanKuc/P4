@@ -4,7 +4,8 @@
 http://P4.ryankucinski.com
 
 ## Demo/Screencast (requires quicktime player)
-
+Main Folder: [http://www.screencast.com/users/ryankucinski]
+P4 Demo:[http://www.screencast.com/users/ryankucinski/folders/Default/media/a28cae32-a38b-4121-9f2d-361a69ecc01f]
 
 ## Description / Process
 Link to [Project Requirements](http://dwa15.com/Projects/P4)
@@ -20,9 +21,10 @@ Link to [Project Requirements](http://dwa15.com/Projects/P4)
 
 
 ## Details
-* login required. (Use -email jill@harvard.edu -password "helloworld")
+* login required. (Use -email jill@harvard.edu -password "helloworld").
 * Validates all HTML form inputs.
 * links to all other CSCI E-15 assignments and their GitHub repos.
+* works well on mobile devices.
 
 ## Outside Sources
 * Bootstrap [http://getbootstrap.com/]
@@ -35,3 +37,4 @@ Link to [Project Requirements](http://dwa15.com/Projects/P4)
 * Foobooks Class Example/Lecture Notes [https://github.com/susanBuck/dwa15-fall2015-notes/tree/master/03_Laravel], [https://github.com/susanBuck/foobooks]
 * Mydnic's simple like system [http://www.mydnic.be/post/simple-like-system-with-laravel-5] (didn't end up recreating)
 * W3 Schools Bootstrap Tutorial [http://www.w3schools.com/bootstrap/default.asp]
+* Hello Fresh (user their recipes for seeder data) [https://www.hellofresh.com/]
