@@ -53,7 +53,11 @@
                   <li><a href="https://github.com/RyanKuc/P3.git">P3 Github</a></li>
                 </ul>
               </li>
-              <li><a href='/logout'>Log out</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href='/logout'>Log out</a></li>
+            </ul>
+
               @else
 
               <li><a href='/login'>Log in</a></li>
